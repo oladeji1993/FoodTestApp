@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "foodCategory",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

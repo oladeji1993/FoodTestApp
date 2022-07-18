@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Products</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let product of allProducts">
+    <ion-card-header>
+      <ion-card-subtitle><img id="product-img" [src]="product.image" alt=""></ion-card-subtitle>
+      <ion-card-title>{{product.name}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <p><span class="c-item">Price:</span> {{product.price}}</p>
+      <p><span class="c-item">Category:</span> {{product.productCategory.name}}</p>
+      <p><span class="c-item">Description:</span> {{product.description}}</p>
+    </ion-card-content>
+  </ion-card>
+  
+
+</ion-content>

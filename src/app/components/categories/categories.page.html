@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+
+    <ion-buttons slot="start">
+      <ion-icon routerLink="/product" name="arrow-back"></ion-icon>
+    </ion-buttons>
+
+      <ion-title>Category</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let category of categories.data">
+    <ion-card-header>
+      <ion-card-title>{{category.name}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <p class="created_by"><span class="item-title">Created by:</span> {{category.createdBy}}</p>
+      <p class="created_by"><span class="item-title">Description:</span> {{category.description}}</p>
+      <p class="created_by"><span class="item-title">Date Created:</span> {{category.dateCreated | date:'M/d/yy, h:mm a'}}</p>
+      <div class="btns" slot="end">
+        <ion-button color="primary" (click)="editProfile(category)">Edit</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>

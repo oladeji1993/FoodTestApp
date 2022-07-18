@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Create Category</ion-title>
+    <ion-buttons slot="start">
+      <ion-icon routerLink="/product" name="arrow-back"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="category">
+  
+  <form [formGroup]="myForm" (ngSubmit)="createCategory()">
+    <div class="ion-padding">
+      <ion-input type="text" placeholder="Name" formControlName="name" [(ngModel)]="name"></ion-input>
+      <div *ngFor="let validation of errorMessages.name">
+        <p class="error"
+          *ngIf="myForm.get('name').hasError(validation.type) && (myForm.get('name').dirty || myForm.get('name').touched || submitAttempt) ">
+          {{validation.message}}
+        </p>
+      </div>
+
+      <ion-input type="text" placeholder="Description" formControlName="description" [(ngModel)]="description"></ion-input>
+      <div *ngFor="let validation of errorMessages.description">
+        <p class="error"
+          *ngIf="myForm.get('description').hasError(validation.type) && (myForm.get('description').dirty || myForm.get('description')?.touched || submitAttempt) ">
+          {{validation.message}}
+        </p>
+      </div>
+      <ion-button expand="block" type="submit" class="btn" color="primary" [disabled]="!myForm.valid">
+        Create
+      </ion-button>
+    </div>
+  </form>
+</ion-content>

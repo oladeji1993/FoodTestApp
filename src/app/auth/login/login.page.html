@@ -1,0 +1,47 @@
+<ion-content class="ion-padding mypage">
+  <div class="ion-padding logo">
+      <img src="assets/logo.png" alt="">
+      Switdish
+  </div>
+
+  <div class="header">
+      <ion-title>Login</ion-title>
+      <div class="ion-padding-start det">
+          Please fill in your credentials
+      </div>
+  </div>
+
+  <form [formGroup]="myForm" (ngSubmit)="login()">
+      <div class="ion-padding">
+          <ion-input type="email" formControlName="email" email="true" placeholder="Email" [(ngModel)]="email">
+          </ion-input>
+          <div *ngFor="let validation of errorMessages.email">
+              <p class="error"
+                  *ngIf="myForm.get('email').hasError(validation.type) && (myForm.get('email').dirty || myForm.get('email').touched || submitAttempt) ">
+                  {{validation.message}}
+              </p>
+          </div>
+
+          <ion-input type="password" formControlName="password" placeholder="Password" [(ngModel)]="password">
+          </ion-input>
+          <div class="errors" *ngFor="let validation of errorMessages.password">
+              <p class="error"
+                  *ngIf="myForm.get('password').hasError(validation.type) && (myForm.get('password').dirty || myForm.get('password').touched || submitAttempt) ">
+                  {{validation.message}}
+              </p>
+          </div>
+
+          <ion-button type="submit" expand="block" class="btn" color="primary" [disabled]="!myForm.valid">
+              Login
+          </ion-button>
+          <br>
+          <ion-button fill="clear" expand="block" size="small">
+              Not a member? &nbsp; <span class="reg" routerLink="/register">Register</span>
+          </ion-button>
+          <ion-button fill="clear" expand="block" color="medium" size="small">
+              Forgot Password?
+          </ion-button>
+
+      </div>
+  </form>
+</ion-content>
